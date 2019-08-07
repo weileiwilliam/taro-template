@@ -1,6 +1,6 @@
 const config = {
-  projectName: 'taro-msparis',
-  date: '2018-9-27',
+  projectName: 'taro-template',
+  date: '2019-8-7',
   // 设计稿尺寸
   designWidth: 750,
   sourceRoot: 'src',
@@ -17,7 +17,7 @@ const config = {
         'transform-decorators-legacy',
         'transform-object-rest-spread'
       ]
-    },
+    }
   },
   // 全局变量设置
   defineConstants: {},

@@ -1,64 +1,64 @@
-import Taro, { Component } from '@tarojs/taro';
-import { View, Text, Image } from '@tarojs/components';
-import { connect } from '@tarojs/redux';
-import MySwiper from '../../components/MySwiper';
-import GoodsList from '../../components/GoodsList';
-import './index.scss';
+import Taro, { Component } from '@tarojs/taro'
+import { View, Text, Image } from '@tarojs/components'
+import { connect } from '@tarojs/redux'
+import { MySwiper, GoodsList } from '../../components'
+import './index.scss'
+import PropTypes from 'prop-types'
 
 @connect(({ home, cart, loading }) => ({
   ...home,
   ...cart,
-  ...loading,
+  ...loading
 }))
 class Index extends Component {
+  static propTypes = {
+    banner: PropTypes.array,
+    brands: PropTypes.array,
+    products_list: PropTypes.array,
+    effects: PropTypes.object,
+    dispatch: PropTypes.func,
+    page: PropTypes.number
+  };
+
   config = {
-    navigationBarTitleText: '首页',
+    navigationBarTitleText: '首页'
   };
 
   componentDidMount = () => {
     this.props.dispatch({
       type: 'home/load',
-    });
+      payload: {
+        a: 1
+      }
+    })
     this.props.dispatch({
-      type: 'home/product',
-    });
-
-    // 设置衣袋小红点
-    if (this.props.items.length > 0) {
-      Taro.setTabBarBadge({
-        index: 1,
-        text: String(this.props.items.length),
-      });
-    } else {
-      Taro.removeTabBarBadge({
-        index: 1,
-      });
-    }
+      type: 'home/product'
+    })
   };
 
-  //分享
-  onShareAppMessage() {
+  // 分享
+  onShareAppMessage () {
     return {
       title: '基于Taro框架开发的时装衣橱',
-      path: '/pages/home/index',
-    };
+      path: '/pages/home/index'
+    }
   }
 
   // 小程序上拉加载
-  onReachBottom() {
+  onReachBottom () {
     this.props.dispatch({
       type: 'home/save',
       payload: {
-        page: this.props.page + 1,
-      },
-    });
+        page: this.props.page + 1
+      }
+    })
     this.props.dispatch({
-      type: 'home/product',
-    });
+      type: 'home/product'
+    })
   }
 
-  render() {
-    const { banner, brands, products_list, effects } = this.props;
+  render () {
+    const { banner, brands, products_list, effects } = this.props
     return (
       <View className="home-page">
         <MySwiper banner={banner} home />
@@ -76,8 +76,8 @@ class Index extends Component {
         <Text className="recommend">为你推荐</Text>
         <GoodsList list={products_list} loading={effects['home/product']} />
       </View>
-    );
+    )
   }
 }
 
-export default Index;
+export default Index

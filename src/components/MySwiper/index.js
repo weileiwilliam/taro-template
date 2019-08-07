@@ -1,21 +1,21 @@
-import Taro, { Component } from '@tarojs/taro';
-import { Swiper, SwiperItem, Image } from '@tarojs/components';
-import PropTypes from 'prop-types';
-import './index.scss';
+import Taro, { Component } from '@tarojs/taro'
+import { Swiper, SwiperItem, Image } from '@tarojs/components'
+import PropTypes from 'prop-types'
+import './index.scss'
 
 export default class MySwiper extends Component {
   static propTypes = {
     banner: PropTypes.array,
-    home: PropTypes.bool,
+    home: PropTypes.bool
   };
 
   static defaultProps = {
     banner: [],
-    home: false,
+    home: false
   };
 
-  render() {
-    const { banner, home } = this.props;
+  render () {
+    const { banner, home } = this.props
     return (
       <Swiper
         className={!home ? 'swiper-container' : 'swiper'}
@@ -31,6 +31,6 @@ export default class MySwiper extends Component {
           </SwiperItem>
         ))}
       </Swiper>
-    );
+    )
   }
 }

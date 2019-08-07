@@ -1,4 +1,4 @@
-import Taro from '@tarojs/taro';
+import Taro from '@tarojs/taro'
 
 export default {
   namespace: 'common',
@@ -18,14 +18,14 @@ export default {
       : '',
     erroMessage: Taro.getStorageSync('user_info')
       ? Taro.getStorageSync('user_info').erroMessage
-      : '',
+      : ''
   },
 
   effects: {},
 
   reducers: {
-    save(state, { payload }) {
-      return { ...state, ...payload };
-    },
-  },
-};
+    save (state, { payload }) {
+      return { ...state, ...payload }
+    }
+  }
+}
